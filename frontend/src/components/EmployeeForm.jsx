@@ -1,0 +1,153 @@
+import React, { useState, useEffect } from 'react';
+import { createEmployee, updateEmployee } from '../services/api';
+
+const EmployeeForm = ({ employee, onClose, onSave }) => {
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        department: 'Engineering'
+    });
+
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+
+    const isEditMode = !!employee;
+
+    useEffect(() => {
+        if (employee) {
+            setFormData({
+                firstName: employee.firstName || '',
+                lastName: employee.lastName || '',
+                email: employee.email || '',
+                department: employee.department || 'Engineering'
+            });
+        }
+    }, [employee]);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setError('');
+
+        try {
+            if (isEditMode) {
+                await updateEmployee(employee.id, formData);
+            } else {
+                await createEmployee(formData);
+            }
+            onSave();
+        } catch (err) {
+            console.error('Error saving employee:', err);
+            // Determine if error is email constraint
+            setError(err.response?.data?.message || 'Failed to save employee. Email might already exist.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const departments = [
+        'Engineering',
+        'Human Resources',
+        'Marketing',
+        'Sales',
+        'Finance',
+        'Operations'
+    ];
+
+    return (
+        <div className="modal-overlay" onClick={onClose}>
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                <div className="modal-header">
+                    <h2 className="modal-title">{isEditMode ? 'Edit Employee' : 'Add New Employee'}</h2>
+                    <button className="btn-icon" onClick={onClose} style={{ border: 'none' }}>✕</button>
+                </div>
+
+                {error && (
+                    <div style={{ backgroundColor: '#FEE2E2', color: '#DC2626', padding: '0.75rem', borderRadius: '0.5rem', marginBottom: '1rem', fontSize: '0.875rem' }}>
+                        {error}
+                    </div>
+                )}
+
+                <form onSubmit={handleSubmit}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                        <div className="form-group">
+                            <label className="form-label" htmlFor="firstName">First Name</label>
+                            <input
+                                className="form-input"
+                                type="text"
+                                id="firstName"
+                                name="firstName"
+                                value={formData.firstName}
+                                onChange={handleChange}
+                                required
+                                placeholder="Jane"
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label className="form-label" htmlFor="lastName">Last Name</label>
+                            <input
+                                className="form-input"
+                                type="text"
+                                id="lastName"
+                                name="lastName"
+                                value={formData.lastName}
+                                onChange={handleChange}
+                                required
+                                placeholder="Doe"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="form-group">
+                        <label className="form-label" htmlFor="email">Email Address</label>
+                        <input
+                            className="form-input"
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                            placeholder="jane.doe@company.com"
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label className="form-label" htmlFor="department">Department</label>
+                        <select
+                            className="form-input"
+                            id="department"
+                            name="department"
+                            value={formData.department}
+                            onChange={handleChange}
+                            required
+                            style={{ paddingRight: '2rem', appearance: 'none', backgroundImage: 'url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236B7280%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 0.75rem top 50%', backgroundSize: '0.65rem auto' }}
+                        >
+                            {departments.map((dept) => (
+                                <option key={dept} value={dept}>{dept}</option>
+                            ))}
+                        </select>
+                    </div>
+
+                    <div className="form-actions">
+                        <button type="button" className="btn btn-secondary" onClick={onClose} disabled={loading}>
+                            Cancel
+                        </button>
+                        <button type="submit" className="btn btn-primary" disabled={loading}>
+                            {loading ? 'Saving...' : (isEditMode ? 'Update Employee' : 'Add Employee')}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    );
+};
+
+export default EmployeeForm;

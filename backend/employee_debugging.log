@@ -1,0 +1,115 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example:backend:jar:0.0.1-SNAPSHOT
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: com.mysql:mysql-connector-j:jar -> duplicate declaration of version (?) @ line 70, column 15
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ------------------------< com.example:backend >-------------------------
+[INFO] Building backend 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:2.7.18:run (default-cli) > test-compile @ backend >>>
+[INFO] 
+[INFO] --- resources:3.2.0:resources (default-resources) @ backend ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 1 resource
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.2.0:testResources (default-testResources) @ backend ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] skip non existing resourceDirectory /Users/eakhalaivan/HR Mangement System/backend/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ backend ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] <<< spring-boot:2.7.18:run (default-cli) < test-compile @ backend <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:2.7.18:run (default-cli) @ backend ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+[32m :: Spring Boot :: [39m             [2m (v2.7.18)[0;39m
+
+[2m2026-03-05 10:44:51.267[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mcom.example.backend.BackendApplication  [0;39m [2m:[0;39m Starting BackendApplication using Java 23.0.2 on Eakhalaivans-MacBook-Air.local with PID 78661 (/Users/eakhalaivan/HR Mangement System/backend/target/classes started by eakhalaivan in /Users/eakhalaivan/HR Mangement System/backend)
+[2m2026-03-05 10:44:51.268[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mcom.example.backend.BackendApplication  [0;39m [2m:[0;39m No active profile set, falling back to 1 default profile: "default"
+[2m2026-03-05 10:44:51.548[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36m.s.d.r.c.RepositoryConfigurationDelegate[0;39m [2m:[0;39m Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2m2026-03-05 10:44:51.579[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36m.s.d.r.c.RepositoryConfigurationDelegate[0;39m [2m:[0;39m Finished Spring Data repository scanning in 27 ms. Found 4 JPA repository interfaces.
+[2m2026-03-05 10:44:51.850[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.s.b.w.embedded.tomcat.TomcatWebServer [0;39m [2m:[0;39m Tomcat initialized with port(s): 8081 (http)
+[2m2026-03-05 10:44:51.855[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.apache.catalina.core.StandardService  [0;39m [2m:[0;39m Starting service [Tomcat]
+[2m2026-03-05 10:44:51.855[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36morg.apache.catalina.core.StandardEngine [0;39m [2m:[0;39m Starting Servlet engine: [Apache Tomcat/9.0.83]
+[2m2026-03-05 10:44:51.896[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.a.c.c.C.[Tomcat].[localhost].[/]      [0;39m [2m:[0;39m Initializing Spring embedded WebApplicationContext
+[2m2026-03-05 10:44:51.896[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mw.s.c.ServletWebServerApplicationContext[0;39m [2m:[0;39m Root WebApplicationContext: initialization completed in 604 ms
+[2m2026-03-05 10:44:51.963[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.hibernate.jpa.internal.util.LogHelper [0;39m [2m:[0;39m HHH000204: Processing PersistenceUnitInfo [name: default]
+[2m2026-03-05 10:44:51.985[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36morg.hibernate.Version                   [0;39m [2m:[0;39m HHH000412: Hibernate ORM core version 5.6.15.Final
+[2m2026-03-05 10:44:52.050[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.hibernate.annotations.common.Version  [0;39m [2m:[0;39m HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2m2026-03-05 10:44:52.082[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mcom.zaxxer.hikari.HikariDataSource      [0;39m [2m:[0;39m HikariPool-1 - Starting...
+[2m2026-03-05 10:44:52.329[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mcom.zaxxer.hikari.HikariDataSource      [0;39m [2m:[0;39m HikariPool-1 - Start completed.
+[2m2026-03-05 10:44:52.337[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36morg.hibernate.dialect.Dialect           [0;39m [2m:[0;39m HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+Hibernate: create table employees (id bigint not null auto_increment, department varchar(255) not null, email varchar(255) not null, first_name varchar(255) not null, last_name varchar(255) not null, primary key (id)) engine=InnoDB
+Hibernate: create table roles (id integer not null auto_increment, name varchar(20), primary key (id)) engine=InnoDB
+Hibernate: create table settings (id bigint not null auto_increment, admin_email varchar(255) not null, notifications bit not null, persistence_mode varchar(255), system_name varchar(255) not null, primary key (id)) engine=InnoDB
+Hibernate: create table user_roles (user_id bigint not null, role_id integer not null, primary key (user_id, role_id)) engine=InnoDB
+Hibernate: create table users (id bigint not null auto_increment, email varchar(50), password varchar(120), username varchar(20), primary key (id)) engine=InnoDB
+Hibernate: alter table employees drop index UK_j9xgmd0ya5jmus09o0b8pqrpb
+Hibernate: alter table employees add constraint UK_j9xgmd0ya5jmus09o0b8pqrpb unique (email)
+Hibernate: alter table users drop index UKr43af9ap4edm43mmtq01oddj6
+Hibernate: alter table users add constraint UKr43af9ap4edm43mmtq01oddj6 unique (username)
+Hibernate: alter table users drop index UK6dotkott2kjsp8vw4d0m25fb7
+Hibernate: alter table users add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email)
+Hibernate: alter table user_roles add constraint FKh8ciramu9cc9q3qcqiv4ue8a6 foreign key (role_id) references roles (id)
+Hibernate: alter table user_roles add constraint FKhfh9dx7w3ubf1co1vdev94g3f foreign key (user_id) references users (id)
+[2m2026-03-05 10:44:52.781[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.h.e.t.j.p.i.JtaPlatformInitiator      [0;39m [2m:[0;39m HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2m2026-03-05 10:44:52.785[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mj.LocalContainerEntityManagerFactoryBean[0;39m [2m:[0;39m Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2m2026-03-05 10:44:53.125[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.s.s.web.DefaultSecurityFilterChain    [0;39m [2m:[0;39m Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1018f702, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5400db7e, org.springframework.security.web.context.SecurityContextPersistenceFilter@7d7f966f, org.springframework.security.web.header.HeaderWriterFilter@3163e03b, org.springframework.web.filter.CorsFilter@a84b6de, org.springframework.security.web.authentication.logout.LogoutFilter@5d449307, com.example.backend.security.jwt.AuthTokenFilter@7acfcfc4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4113d9ab, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@448fa659, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@76eee0b1, org.springframework.security.web.session.SessionManagementFilter@237ee2e1, org.springframework.security.web.access.ExceptionTranslationFilter@57ac236a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4880a9d]
+[2m2026-03-05 10:44:53.143[0;39m [33m WARN[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mJpaBaseConfiguration$JpaWebConfiguration[0;39m [2m:[0;39m spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2m2026-03-05 10:44:53.311[0;39m [33m WARN[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mConfigServletWebServerApplicationContext[0;39m [2m:[0;39m Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8081 is already in use
+[2m2026-03-05 10:44:53.313[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mj.LocalContainerEntityManagerFactoryBean[0;39m [2m:[0;39m Closing JPA EntityManagerFactory for persistence unit 'default'
+[2m2026-03-05 10:44:53.314[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mcom.zaxxer.hikari.HikariDataSource      [0;39m [2m:[0;39m HikariPool-1 - Shutdown initiated...
+[2m2026-03-05 10:44:53.317[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mcom.zaxxer.hikari.HikariDataSource      [0;39m [2m:[0;39m HikariPool-1 - Shutdown completed.
+[2m2026-03-05 10:44:53.318[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.apache.catalina.core.StandardService  [0;39m [2m:[0;39m Stopping service [Tomcat]
+[2m2026-03-05 10:44:53.325[0;39m [32m INFO[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mConditionEvaluationReportLoggingListener[0;39m [2m:[0;39m 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[2m2026-03-05 10:44:53.339[0;39m [31mERROR[0;39m [35m78661[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.s.b.d.LoggingFailureAnalysisReporter  [0;39m [2m:[0;39m 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.248 s
+[INFO] Finished at: 2026-03-05T10:44:53+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:2.7.18:run (default-cli) on project backend: Application finished with exit code: 1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
