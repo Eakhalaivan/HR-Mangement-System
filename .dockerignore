@@ -1,0 +1,20 @@
+# Ignore everything in the root context by default
+*
+
+# Allow the backend directory
+!backend/
+
+# But ignore target and other unnecessary things inside backend
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+backend/*.log
+backend/.idea/
+backend/.vscode/
+
+# Allow these specific files at the root level context during COPY (if they were copied individually)
+!backend/pom.xml
+!backend/src/
+!backend/.mvn/
+!backend/mvnw

@@ -18,7 +18,8 @@ services:
     env: docker
     plan: free
     region: oregon
-    rootDir: backend
+    dockerContext: .
+    dockerfilePath: Dockerfile
     envVars:
       - key: APP_FRONTEND_URL
         value: https://hr-mangement-system.vercel.app/
