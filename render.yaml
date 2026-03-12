@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: hr-management-backend
+    env: java
+    plan: free
+    region: oregon
+    buildCommand: "./mvnw clean package"
+    startCommand: "java -jar target/backend-0.0.1-SNAPSHOT.jar"
+    rootDir: backend
+    envVars:
+      - key: APP_FRONTEND_URL
+        value: https://hr-mangement-system.vercel.app/
+      - key: JAVA_VERSION
+        value: 21
