@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createEmployee, updateEmployee } from '../services/api';
+import { X } from 'lucide-react';
 
 const EmployeeForm = ({ employee, onClose, onSave }) => {
     const [formData, setFormData] = useState({
@@ -44,7 +45,6 @@ const EmployeeForm = ({ employee, onClose, onSave }) => {
             onSave();
         } catch (err) {
             console.error('Error saving employee:', err);
-            // Determine if error is email constraint
             setError(err.response?.data?.message || 'Failed to save employee. Email might already exist.');
         } finally {
             setLoading(false);
@@ -61,54 +61,60 @@ const EmployeeForm = ({ employee, onClose, onSave }) => {
     ];
 
     return (
-        <div className="modal-overlay" onClick={onClose}>
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                <div className="modal-header">
-                    <h2 className="modal-title">{isEditMode ? 'Edit Employee' : 'Add New Employee'}</h2>
-                    <button className="btn-icon" onClick={onClose} style={{ border: 'none' }}>✕</button>
+        <div className="fixed inset-0 bg-gray-900/50 backdrop-blur-sm flex justify-center items-center z-50 p-4 animate-in fade-in duration-200" onClick={onClose}>
+            <div className="bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden transform animate-in slide-in-from-bottom-8 duration-300" onClick={(e) => e.stopPropagation()}>
+                <div className="px-8 py-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
+                    <div>
+                        <h2 className="text-xl font-bold text-gray-900">{isEditMode ? 'Refactor Profile' : 'Onboard New Talent'}</h2>
+                        <p className="text-xs text-gray-500 mt-0.5">Fill in the professional details below.</p>
+                    </div>
+                    <button className="p-2 hover:bg-white rounded-xl text-gray-400 hover:text-gray-900 transition-all border border-transparent hover:border-gray-100" onClick={onClose}>
+                        <X size={20} />
+                    </button>
                 </div>
 
                 {error && (
-                    <div style={{ backgroundColor: '#FEE2E2', color: '#DC2626', padding: '0.75rem', borderRadius: '0.5rem', marginBottom: '1rem', fontSize: '0.875rem' }}>
+                    <div className="mx-8 mt-6 bg-red-50 text-red-600 p-4 rounded-xl text-sm border border-red-100 flex items-center gap-3">
+                        <div className="w-1.5 h-1.5 bg-red-600 rounded-full animate-pulse"></div>
                         {error}
                     </div>
                 )}
 
-                <form onSubmit={handleSubmit}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                        <div className="form-group">
-                            <label className="form-label" htmlFor="firstName">First Name</label>
+                <form onSubmit={handleSubmit} className="p-8 space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                            <label className="block text-sm font-bold text-gray-700 ml-1" htmlFor="firstName">First Name</label>
                             <input
-                                className="form-input"
+                                className="w-full px-4 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-indigo-100 outline-none transition-all placeholder-gray-400 font-medium"
                                 type="text"
                                 id="firstName"
                                 name="firstName"
                                 value={formData.firstName}
                                 onChange={handleChange}
                                 required
-                                placeholder="Jane"
+                                placeholder="e.g. Jane"
                             />
                         </div>
 
-                        <div className="form-group">
-                            <label className="form-label" htmlFor="lastName">Last Name</label>
+                        <div className="space-y-2">
+                            <label className="block text-sm font-bold text-gray-700 ml-1" htmlFor="lastName">Last Name</label>
                             <input
-                                className="form-input"
+                                className="w-full px-4 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-indigo-100 outline-none transition-all placeholder-gray-400 font-medium"
                                 type="text"
                                 id="lastName"
                                 name="lastName"
                                 value={formData.lastName}
                                 onChange={handleChange}
                                 required
-                                placeholder="Doe"
+                                placeholder="e.g. Doe"
                             />
                         </div>
                     </div>
 
-                    <div className="form-group">
-                        <label className="form-label" htmlFor="email">Email Address</label>
+                    <div className="space-y-2">
+                        <label className="block text-sm font-bold text-gray-700 ml-1" htmlFor="email">Work Email Address</label>
                         <input
-                            className="form-input"
+                            className="w-full px-4 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-indigo-100 outline-none transition-all placeholder-gray-400 font-medium"
                             type="email"
                             id="email"
                             name="email"
@@ -119,29 +125,49 @@ const EmployeeForm = ({ employee, onClose, onSave }) => {
                         />
                     </div>
 
-                    <div className="form-group">
-                        <label className="form-label" htmlFor="department">Department</label>
-                        <select
-                            className="form-input"
-                            id="department"
-                            name="department"
-                            value={formData.department}
-                            onChange={handleChange}
-                            required
-                            style={{ paddingRight: '2rem', appearance: 'none', backgroundImage: 'url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236B7280%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 0.75rem top 50%', backgroundSize: '0.65rem auto' }}
-                        >
-                            {departments.map((dept) => (
-                                <option key={dept} value={dept}>{dept}</option>
-                            ))}
-                        </select>
+                    <div className="space-y-2">
+                        <label className="block text-sm font-bold text-gray-700 ml-1" htmlFor="department">Departmental Assignment</label>
+                        <div className="relative">
+                            <select
+                                className="w-full px-4 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-indigo-100 outline-none transition-all appearance-none text-gray-700 font-medium"
+                                id="department"
+                                name="department"
+                                value={formData.department}
+                                onChange={handleChange}
+                                required
+                            >
+                                {departments.map((dept) => (
+                                    <option key={dept} value={dept}>{dept}</option>
+                                ))}
+                            </select>
+                            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="form-actions">
-                        <button type="button" className="btn btn-secondary" onClick={onClose} disabled={loading}>
+                    <div className="flex gap-4 pt-4">
+                        <button
+                            type="button"
+                            className="flex-1 py-3.5 px-6 rounded-xl font-bold text-gray-600 bg-gray-100 hover:bg-gray-200 transition-all transform hover:scale-[1.02]"
+                            onClick={onClose}
+                            disabled={loading}
+                        >
                             Cancel
                         </button>
-                        <button type="submit" className="btn btn-primary" disabled={loading}>
-                            {loading ? 'Saving...' : (isEditMode ? 'Update Employee' : 'Add Employee')}
+                        <button
+                            type="submit"
+                            className="flex-3 py-3.5 px-6 rounded-xl font-bold text-white bg-primary hover:bg-primary-hover shadow-lg shadow-indigo-100 transition-all transform hover:scale-[1.02] disabled:opacity-50"
+                            disabled={loading}
+                        >
+                            {loading ? (
+                                <span className="flex items-center justify-center gap-2">
+                                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                                    Syncing...
+                                </span>
+                            ) : (isEditMode ? 'Commit Changes' : 'Confirm Onboarding')}
                         </button>
                     </div>
                 </form>
