@@ -1,20 +1,19 @@
-# Ignore everything in the root context by default
+# Ignore everything by default
 *
 
-# Allow the backend directory
-!backend/
+# Allow the Dockerfile and .dockerignore themselves
+!Dockerfile
+!.dockerignore
 
-# But ignore target and other unnecessary things inside backend
+# Allow the backend directory and its essential build files
+!backend/
 backend/target/
-backend/.mvn/
-backend/mvnw
-backend/mvnw.cmd
 backend/*.log
 backend/.idea/
 backend/.vscode/
 
-# Allow these specific files at the root level context during COPY (if they were copied individually)
-!backend/pom.xml
-!backend/src/
-!backend/.mvn/
+# Ensure wrapper and pom are NOT ignored (even though !backend/ should cover it, being explicit is safer)
 !backend/mvnw
+!backend/mvnw.cmd
+!backend/.mvn/
+!backend/pom.xml
