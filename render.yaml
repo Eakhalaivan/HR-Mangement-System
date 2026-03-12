@@ -12,3 +12,13 @@ services:
         value: https://hr-mangement-system.vercel.app/
       - key: JAVA_VERSION
         value: 21
+
+  - type: web
+    name: hr-management-backend-docker
+    env: docker
+    plan: free
+    region: oregon
+    rootDir: backend
+    envVars:
+      - key: APP_FRONTEND_URL
+        value: https://hr-mangement-system.vercel.app/
